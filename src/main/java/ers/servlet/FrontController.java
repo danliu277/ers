@@ -12,30 +12,42 @@ public class FrontController extends HttpServlet {
 	
 	@Override
 	protected void doPost(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
+		System.out.println("front controller");
 		String requestURI = req.getRequestURI();
 		switch(requestURI) {
-			case "/ers/login.do": {
-				resp.sendRedirect("login.do");
+			case "ers/login.do": {
+				req.getRequestDispatcher("login.do").forward(req, resp);
+				//resp.sendRedirect("login.do");
 				break;
 			}
-			case "ers/toAdd.do": {
-				resp.sendRedirect("toAdd.do");
+			case "/ers/secure/toAdd.do": {
+				req.getRequestDispatcher("../toAdd.do").forward(req, resp);
+				//resp.sendRedirect("../toAdd.do");
 				break;
 			}
-			case "ers/logout.do": {
-				resp.sendRedirect("logout.do");
+			case "/ers/secure/add.do": {
+				req.getRequestDispatcher("../add.do").forward(req, resp);
+				//resp.sendRedirect("../add.do");
 				break;
 			}
-			case "ers/approve.do": {
-				resp.sendRedirect("approve.do");
+			case "/ers/secure/logout.do": {
+				req.getRequestDispatcher("../logout.do").forward(req, resp);
+				//resp.sendRedirect("../logout.do");
 				break;
 			}
-			case "ers/filter.do": {
-				resp.sendRedirect("filter.do");
+			case "/ers/secure/approve.do": {
+				req.getRequestDispatcher("../approve.do").forward(req, resp);
+				//resp.sendRedirect("../approve.do");
 				break;
 			}
-			case "ers/receipt.do": {
-				resp.sendRedirect("receipt.do");
+			case "/ers/secure/filter.do": {
+				req.getRequestDispatcher("../filter.do").forward(req, resp);
+				//resp.sendRedirect("../filter.do");
+				break;
+			}
+			case "/ers/secure/receipt.do": {
+				req.getRequestDispatcher("../receipt.do").forward(req, resp);
+				//resp.sendRedirect("../receipt.do");
 				break;
 			}
 			default: {

@@ -27,6 +27,8 @@ public class AddServlet extends HttpServlet{
 					inputStream = filePart.getInputStream();
 				}
 			}
+			System.out.println(req.getParameter("amount"));
+			System.out.println(req.getParameter("type"));
 			facade.addReimbursement( Double.parseDouble(req.getParameter("amount")), 
 				req.getParameter("description"), 
 				inputStream, 
@@ -36,15 +38,15 @@ public class AddServlet extends HttpServlet{
 				req.getParameter("type").toString().equals("Food") ? 3 : 4);
 			req.getSession().setAttribute("reimb", 
 				facade.findUserReimbursement(Integer.parseInt(req.getSession().getAttribute("userId").toString())));
-			resp.sendRedirect("employeePage.jsp");
+			resp.sendRedirect("secure/employeePage.jsp");
 		} catch(Exception e) {
 			e.printStackTrace();
-			resp.sendRedirect("error/500.jsp");
 		}
 	}
 	
 	@Override
 	protected void doGet(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
+		System.out.println("GET: " + req.getParameter("amount"));
 		this.doPost(req, resp);
 	}
 }

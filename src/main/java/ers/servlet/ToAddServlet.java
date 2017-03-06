@@ -11,7 +11,8 @@ import javax.servlet.http.HttpServletResponse;
 public class ToAddServlet extends HttpServlet{
 	@Override
 	protected void doPost(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
-		resp.sendRedirect("addReimbursement.jsp");
+		resp.sendRedirect("secure/addReimbursement.jsp");
+		//req.getRequestDispatcher("secure/addReimbursement.jsp").forward(req, resp);
 	}
 	
 	@Override

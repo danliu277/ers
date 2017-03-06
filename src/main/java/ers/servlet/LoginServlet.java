@@ -24,14 +24,13 @@ public class LoginServlet extends HttpServlet{
 				session.setAttribute("username", req.getParameter("user"));
 				session.setAttribute("name", user.getFirstName() + " " + user.getLastName());
 				session.setAttribute("role", user.getrole().getRole());
-				session.setAttribute("facade", facade);
 				if(user.getrole().getRoleId() == 1) {
 					session.setAttribute("reimb", facade.findAllReimbursement());
-					resp.sendRedirect("managerPage.jsp");
+					resp.sendRedirect("secure/managerPage.jsp");
 				}
 				else {
 					session.setAttribute("reimb", facade.findUserReimbursement(user.getUserId()));
-					resp.sendRedirect("employeePage.jsp");
+					resp.sendRedirect("secure/employeePage.jsp");
 				}
 			}
 			else {
@@ -45,7 +44,6 @@ public class LoginServlet extends HttpServlet{
 	
 	@Override
 	protected void doGet(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
-		System.out.println("Login get called");
-		this.doPost(req, resp);
+		req.getRequestDispatcher("login.jsp").forward(req, resp);
 	}
 }

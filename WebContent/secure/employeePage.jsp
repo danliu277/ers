@@ -7,32 +7,23 @@
 	<head>
 		<meta http-equiv="Content-Type" content="text/html; charset=ISO-8859-1">
 		<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css" integrity="sha384-BVYiiSIFeK1dGmJRAkycuHAHRg32OmUcww7on3RYdg4Va+PmSTsz/K68vbdEjh4u" crossorigin="anonymous">
-		<link href="style/table.css" rel="stylesheet">
-		<title>Manager Page</title>
+		<title>Employee Page</title>
+		<link href="../style/table.css" rel="stylesheet">
 	</head>
 	<body>
 		<% int i=1; %>
-		<form action="logout.do" type="post">
+		<form action="logout.do" method="post">
 			<input type="submit" value="Logout" />
 		</form>
 		<span>Username: </span><c:out value="${username}" /> <br/>
 		<span>Name: </span><c:out value="${name}" /> <br/>
 		<span>Role: </span><c:out value="${role}" /> <br/>
-		<div>
-			Filter by:
-			<form action="filter.do" method="post">
-				<select name="filter">
-					<option value="All">All</option>
-					<option value="Pending">Pending</option>
-					<option value="Approved">Approved</option>
-					<option value="Denied">Denied</option>
-				</select>
-				<input type="submit" value="Submit">
-			</form>
-		</div>
+		<form action="toAdd.do" method="post">
+			<input type="submit" value="Add Reimbursement" />
+		</form>
 		<table class="table table-striped table-hover table-condensed table-bordered table-responsive">
 			<tr><th>#</th><th>Amount</th><th>Submitted</th><th>Resolved<th>Description</th>
-			<th>Receipt</th><th>Author</th><th>Resolver</th><th>Status</th><th>Type</th><th>Approval</th></tr>
+			<th>Receipt</th><th>Author</th><th>Resolver</th><th>Status</th><th>Type</th></tr>
 			<c:forEach var="temp" items="${reimb}">
 				<tr>
 				<td><%= i++ %></td>
@@ -74,21 +65,7 @@
 					</c:choose>
 				</td>
 				<td>${temp.status.status}</td>
-				<td>${temp.type.type}</td>
-				<td>
-					<c:choose>
-						<c:when test="${temp.status.status == 'Pending'}">
-							<form action="approve.do" method="post">
-								<input type="hidden" value="${temp.reimbId}" name="reimbId">
-								<input type="submit" name="act" value="Approve"/>
-								<input type="submit" name="act" value="Deny" />
-							</form>
-						</c:when>
-						<c:otherwise>
-							-
-						</c:otherwise>
-					</c:choose>
-				</td></tr>
+				<td>${temp.type.type}</td></tr>
 			</c:forEach>
 		</table>
 	</body>

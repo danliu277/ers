@@ -22,7 +22,7 @@ public class ApproveServlet extends HttpServlet{
 						Integer.parseInt(req.getSession().getAttribute("userId").toString()), 3);
 			}
 			req.getSession().setAttribute("reimb", facade.findAllReimbursement());
-			resp.sendRedirect("managerPage.jsp");
+			resp.sendRedirect("secure/managerPage.jsp");
 		} catch(Exception e) {
 			e.printStackTrace();
 		}

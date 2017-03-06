@@ -24,7 +24,7 @@ public class FilterServlet extends HttpServlet {
 			} else if(filter.equals("Denied")) {
 				req.getSession().setAttribute("reimb", facade.filterReimbursement(3));
 			}
-			resp.sendRedirect("managerPage.jsp");
+			resp.sendRedirect("secure/managerPage.jsp");
 		} catch(Exception e) {
 			e.printStackTrace();
 		}

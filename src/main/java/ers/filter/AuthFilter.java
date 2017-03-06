@@ -22,9 +22,11 @@ public class AuthFilter implements Filter{
 			throws IOException, ServletException {
 		HttpServletRequest req = (HttpServletRequest) request;
 		// Checks if user logged in using session val attribute
-		if(req.getSession().getAttribute("val") == null) {
+		if(req.getSession().getAttribute("userId") == null) {
+			System.out.println("Filtered");
 			request.setAttribute("please_login", "You must login!");
-			req.getRequestDispatcher("login.do").forward(request, response);
+			//req.getRequestDispatcher("login.do").forward(request, response);
+			request.getRequestDispatcher("/login.do").forward(request, response);
 		} else {
 			chain.doFilter(request, response);
 		}
