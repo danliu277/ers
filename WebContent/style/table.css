@@ -1,0 +1,10 @@
+@CHARSET "ISO-8859-1";
+
+td, th {
+	text-align: center;
+	vertical-align: middle;
+}
+
+body {
+	background: #fff;
+}

@@ -6,6 +6,8 @@
 <html>
 	<head>
 		<meta http-equiv="Content-Type" content="text/html; charset=ISO-8859-1">
+		<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css" integrity="sha384-BVYiiSIFeK1dGmJRAkycuHAHRg32OmUcww7on3RYdg4Va+PmSTsz/K68vbdEjh4u" crossorigin="anonymous">
+		<link href="style/table.css" rel="stylesheet">
 		<title>Manager Page</title>
 	</head>
 	<body>
@@ -28,7 +30,7 @@
 				<input type="submit" value="Submit">
 			</form>
 		</div>
-		<table>
+		<table class="table table-striped table-hover table-condensed table-bordered table-responsive">
 			<tr><th>#</th><th>Amount</th><th>Submitted</th><th>Resolved<th>Description</th>
 			<th>Receipt</th><th>Author</th><th>Resolver</th><th>Status</th><th>Type</th><th>Approval</th></tr>
 			<c:forEach var="temp" items="${reimb}">

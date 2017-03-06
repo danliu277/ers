@@ -1,0 +1,10 @@
+@CHARSET "ISO-8859-1";
+
+body {
+	background: grey;
+}
+
+.container {
+	padding-top: 1%;
+	width: 50%;
+}

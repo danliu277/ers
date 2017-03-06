@@ -6,13 +6,18 @@
 	<head>
 		<meta http-equiv="Content-Type" content="text/html; charset=ISO-8859-1">
 		<title>Login</title>
+		<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css" integrity="sha384-BVYiiSIFeK1dGmJRAkycuHAHRg32OmUcww7on3RYdg4Va+PmSTsz/K68vbdEjh4u" crossorigin="anonymous">
+		<link href="style/loginStyle.css" rel="stylesheet">
 	</head>
 	<body>
-		<form action="login.do" method="post">
-			<div>Username</div><input type="text"  name="user" /><br/>
-			<div>Password</div><input type="password" name="pass" /><br/>
-			<input type="submit" value="Submit" /><br/>
-		</form>
+		<div class="container">
+			<form class="form-signin" action="login.do" method="post">
+				<h2 class="form-signin-heading">Please Log In</h2>
+				<input type="text"  name="user" class="form-control" placeholder="Username" required autofocus/>
+				<input type="password" name="pass" class="form-control" placeholder="Password" required /><br/>
+				<input type="submit" value="Log In" class="btn btn-lg btn-primary btn-block" /><br/>
+			</form>
+		</div>
 		<c:if test="${not empty please_login}">
 			<div style="color: red; font-weight: bolder;">
 				<c:out value="${please_login}" />
