@@ -91,6 +91,17 @@
 		<url-pattern>receipt.do</url-pattern>
 	</servlet-mapping>
 
+	
+	<error-page>
+		<error-code>404</error-code>
+		<location>/error/404.jsp</location>
+	</error-page>
+
+	<error-page>
+		<error-code>500</error-code>
+		<location>/error/500.jsp</location>
+	</error-page>
+
 	<filter>
 		<filter-name>auth</filter-name>
 		<filter-class>ers.filter.AuthFilter</filter-class>

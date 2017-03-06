@@ -7,6 +7,6 @@
 		<title>Error 500</title>
 	</head>
 	<body>
-		<img alt="Error 500" src="http://clipart-library.com/clipart/6Tp5kB9ac.htm">
+		<img alt="Error 500" src="https://prod-university-library.s3.amazonaws.com/uploads/pattern/image/1616/3489517584a32335daddee.png">
 	</body>
 </html>
