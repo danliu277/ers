@@ -1,3 +1,7 @@
+/**
+ *  Java bean for user
+ */
+
 package ers;
 
 public class User {

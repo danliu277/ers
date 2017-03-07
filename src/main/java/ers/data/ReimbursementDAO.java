@@ -19,10 +19,12 @@ import ers.UserRole;
 public class ReimbursementDAO {
 	private Connection conn;
 
+	// Use given connection
 	public ReimbursementDAO(Connection conn) {
 		this.conn = conn;
 	}
 	
+	// Returns list of reimbursement given a userId
 	public List<Reimbursement> findUserReimbursement(int user) throws SQLException {
 		String sql = "SELECT REIMBURSEMENT.REIMB_ID AS ID, "
 				+ "REIMBURSEMENT.REIMB_AMOUNT AS AMOUNT, "
@@ -115,6 +117,7 @@ public class ReimbursementDAO {
 		return list;
 	}
 	
+	// Returns list of all reimbursements 
 	public List<Reimbursement> findAllReimbursement() throws SQLException {
 		String sql = "SELECT REIMBURSEMENT.REIMB_ID AS ID, "
 				+ "REIMBURSEMENT.REIMB_AMOUNT AS AMOUNT, "
@@ -205,6 +208,7 @@ public class ReimbursementDAO {
 		return list;
 	}
 	
+	// Returns list of all reimbursements that matches filterStatusId
 	public List<Reimbursement> filterReimbursement(int filterStatus) throws SQLException {
 		String sql = "SELECT REIMBURSEMENT.REIMB_ID AS ID, "
 				+ "REIMBURSEMENT.REIMB_AMOUNT AS AMOUNT, "
@@ -298,12 +302,15 @@ public class ReimbursementDAO {
 		return list;
 	}
 	
+	// Insert reimbursement into database given amount, description, receipt, authorId, and typeId
 	public void addReimbursement(double amount, String descript, InputStream receipt, int author, int type) throws SQLException {
 		String sql = "INSERT INTO ERS_REIMBURSEMENT VALUES(1, ?, ?, NULL, ?, ?, ?, NULL, 1, ?)";
 		PreparedStatement stmt = conn.prepareStatement(sql);
 		stmt.setDouble(1, amount);
+		// Set timestamp to current timestamp
 		stmt.setTimestamp(2, new Timestamp(System.currentTimeMillis()));
 		stmt.setString(3, descript);
+		// If no receipt given set to null
 		if(receipt == null)
 			stmt.setNull(4, java.sql.Types.BLOB);
 		else
@@ -314,6 +321,7 @@ public class ReimbursementDAO {
 		conn.commit();
 	}
 	
+	// Update status given reimbursementId, resolverId, and statusId
 	public void updateReimbursement(int reimbId, int resolver, int status) throws SQLException {
 		String sql = "UPDATE ERS_REIMBURSEMENT "
 				+ "SET REIMB_STATUS_ID=?, "
@@ -323,12 +331,14 @@ public class ReimbursementDAO {
 		PreparedStatement stmt = conn.prepareStatement(sql);
 		stmt.setInt(1, status);
 		stmt.setInt(2, resolver);
+		// Set resolved time to current time
 		stmt.setTimestamp(3, new Timestamp(System.currentTimeMillis()));
 		stmt.setInt(4, reimbId);
 		stmt.executeUpdate();
 		conn.commit();
 	}
-	
+
+	// Return blob of receipt
 	public Blob findReceipt(int reimbId) throws SQLException {
 		String sql = "SELECT REIMB_RECEIPT "
 				+ "FROM ERS_REIMBURSEMENT "

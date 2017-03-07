@@ -4,11 +4,14 @@
 	xsi:schemaLocation="http://xmlns.jcp.org/xml/ns/javaee http://xmlns.jcp.org/xml/ns/javaee/web-app_3_1.xsd"
 	id="WebApp_ID" version="3.1">
 	
+	<!--  -->
 	<context-param>
 		<param-name>globalConfig</param-name>
 		<param-value>/global/config.xml</param-value>
 	</context-param>
 	
+	<!-- Servlet declaration -->
+	<!-- For front controller -->
 	<servlet>
 		<servlet-name>front</servlet-name>
 		<servlet-class>ers.servlet.FrontController</servlet-class>
@@ -17,7 +20,7 @@
 		<servlet-name>front</servlet-name>
 		<url-pattern>*.do</url-pattern>
 	</servlet-mapping>
-
+	<!-- For login page -->
 	<servlet>
 		<servlet-name>login</servlet-name>
 		<servlet-class>ers.servlet.LoginServlet</servlet-class>
@@ -30,7 +33,7 @@
 		<servlet-name>login</servlet-name>
 		<url-pattern>login.do</url-pattern>
 	</servlet-mapping>
-
+	<!-- For sending to addReimbursement page -->
 	<servlet>
 		<servlet-name>toAdd</servlet-name>
 		<servlet-class>ers.servlet.ToAddServlet</servlet-class>
@@ -39,7 +42,7 @@
 		<servlet-name>toAdd</servlet-name>
 		<url-pattern>toAdd.do</url-pattern>
 	</servlet-mapping>
-
+	<!-- For adding reimbursement -->
 	<servlet>
 		<servlet-name>add</servlet-name>
 		<servlet-class>ers.servlet.AddServlet</servlet-class>
@@ -54,7 +57,7 @@
 		<servlet-name>add</servlet-name>
 		<url-pattern>add.do</url-pattern>
 	</servlet-mapping>
-
+	<!-- For logging out -->
 	<servlet>
 		<servlet-name>logout</servlet-name>
 		<servlet-class>ers.servlet.LogoutServlet</servlet-class>
@@ -63,7 +66,7 @@
 		<servlet-name>logout</servlet-name>
 		<url-pattern>logout.do</url-pattern>
 	</servlet-mapping>
-
+	<!-- For approving or denying reimbursements -->
 	<servlet>
 		<servlet-name>approve</servlet-name>
 		<servlet-class>ers.servlet.ApproveServlet</servlet-class>
@@ -72,7 +75,7 @@
 		<servlet-name>approve</servlet-name>
 		<url-pattern>approve.do</url-pattern>
 	</servlet-mapping>
-
+	<!-- For filtering reimbursement -->
 	<servlet>
 		<servlet-name>filter</servlet-name>
 		<servlet-class>ers.servlet.FilterServlet</servlet-class>
@@ -81,7 +84,7 @@
 		<servlet-name>filter</servlet-name>
 		<url-pattern>filter.do</url-pattern>
 	</servlet-mapping>
-
+	<!-- For displaying reimbursement -->
 	<servlet>
 		<servlet-name>receipt</servlet-name>
 		<servlet-class>ers.servlet.ReceiptServlet</servlet-class>
@@ -91,17 +94,20 @@
 		<url-pattern>receipt.do</url-pattern>
 	</servlet-mapping>
 
-	
+	<!-- Error Page Declaration -->
+	<!-- Error 404 -->
 	<error-page>
 		<error-code>404</error-code>
 		<location>/error/404.jsp</location>
 	</error-page>
-
+	<!-- Error 500 -->
 	<error-page>
 		<error-code>500</error-code>
 		<location>/error/500.jsp</location>
 	</error-page>
 
+	<!-- Filter Declaration -->
+	<!-- Makes sure user logs in before they can access reimbursement stuff -->
 	<filter>
 		<filter-name>auth</filter-name>
 		<filter-class>ers.filter.AuthFilter</filter-class>
@@ -110,4 +116,33 @@
 		<filter-name>auth</filter-name>
 		<url-pattern>/secure/*</url-pattern>
 	</filter-mapping>
+	<!-- Redirects user to Employee or Manager page if they try to go to login page -->
+	<filter>
+		<filter-name>login</filter-name>
+		<filter-class>ers.filter.LoginFilter</filter-class>
+	</filter>
+	<filter-mapping>
+		<filter-name>login</filter-name>
+		<url-pattern>/login.jsp</url-pattern>
+	</filter-mapping>
+	<!-- If Employee logs in they cannot go to Manager page -->
+	<filter>
+		<filter-name>manager</filter-name>
+		<filter-class>ers.filter.ManagerFilter</filter-class>
+	</filter>
+	<filter-mapping>
+		<filter-name>manager</filter-name>
+		<url-pattern>/secure/managerPage.jsp</url-pattern>
+	</filter-mapping>
+	
+	<filter>
+		<filter-name>employee</filter-name>
+		<filter-class>ers.filter.EmployeeFilter</filter-class>
+	</filter>
+	<filter-mapping>
+		<filter-name>employee</filter-name>
+		<url-pattern>/secure/employeePage.jsp</url-pattern>
+		<url-pattern>/secure/addReimbursement.jsp</url-pattern>
+	</filter-mapping>
+	
 </web-app>

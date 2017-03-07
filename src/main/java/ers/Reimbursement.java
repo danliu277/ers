@@ -1,3 +1,7 @@
+/**
+ *  Java bean for reimbursements
+ */
+
 package ers;
 
 import java.sql.Blob;

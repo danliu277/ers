@@ -1,3 +1,7 @@
+/**
+ *  Java bean for status
+ */
+
 package ers;
 
 public class Status {

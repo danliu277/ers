@@ -1,3 +1,6 @@
+/**
+ *  Java bean for UserRole
+ */
 package ers;
 
 public class UserRole {

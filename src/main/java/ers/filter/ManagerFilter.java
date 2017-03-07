@@ -9,31 +9,31 @@ import javax.servlet.ServletException;
 import javax.servlet.ServletRequest;
 import javax.servlet.ServletResponse;
 import javax.servlet.http.HttpServletRequest;
+import javax.servlet.http.HttpServletResponse;
 
-public class AuthFilter implements Filter{
+public class ManagerFilter implements Filter {
 
 	@Override
 	public void init(FilterConfig filterConfig) throws ServletException {
-		
+		// ???
 	}
 
+	// If employee tryies to get to managerPage redirects them back to employeePage
 	@Override
 	public void doFilter(ServletRequest request, ServletResponse response, FilterChain chain)
 			throws IOException, ServletException {
 		HttpServletRequest req = (HttpServletRequest) request;
-		// Checks if user logged in using session val attribute
-		if(req.getSession().getAttribute("userId") == null) {
-			request.setAttribute("please_login", "You must login!");
-			//req.getRequestDispatcher("login.do").forward(request, response);
-			request.getRequestDispatcher("/login.do").forward(request, response);
-		} else {
+		HttpServletResponse res = (HttpServletResponse) response;
+		if(req.getSession().getAttribute("role").equals("Manager")) {
 			chain.doFilter(request, response);
+		} else if(req.getSession().getAttribute("role").equals("Employee")) {
+			res.sendRedirect("employeePage.jsp");
 		}
 	}
 
 	@Override
 	public void destroy() {
-		
+		// ???
 	}
 
 }

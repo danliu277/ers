@@ -1,3 +1,7 @@
+/**
+ *  Java bean for type
+ */
+
 package ers;
 
 public class Type {

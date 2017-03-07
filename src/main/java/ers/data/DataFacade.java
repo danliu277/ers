@@ -1,3 +1,7 @@
+/**
+ *  Facade that will be called by servlets
+ */
+
 package ers.data;
 
 import java.io.InputStream;
@@ -17,6 +21,7 @@ public class DataFacade implements AutoCloseable{
 	private UserDAO userDAO;
 	private Connection conn;
 	
+	// Pass connection to user and reimbursement DAO
 	public DataFacade(){
 		try {
 			conn = ConnectionFactory.getConnection();
@@ -29,6 +34,7 @@ public class DataFacade implements AutoCloseable{
 		}
 	}
 
+	// Find user if password given matches with the username given and password in database
 	public User findUser(String username, String password) throws Exception {
 		String temp = userDAO.findPassword(username);
 		if(temp == null) {
@@ -45,26 +51,32 @@ public class DataFacade implements AutoCloseable{
 		}
 	}
 	
+	// Returns list of reimbursements given userId
 	public List<Reimbursement> findUserReimbursement(int user) throws Exception{
 		return reimbursementDAO.findUserReimbursement(user);
 	}
 	
+	// Returns list of all reimbursements
 	public List<Reimbursement> findAllReimbursement() throws Exception{
 		return reimbursementDAO.findAllReimbursement();
 	}
 	
+	// Returns list of reimbursements that matches the given statusId
 	public List<Reimbursement> filterReimbursement(int statusId) throws Exception {
 		return reimbursementDAO.filterReimbursement(statusId);
 	}
 	
+	// Add in reimbursement given amount, description, receipt image, authorId, and typeId
 	public void addReimbursement(double amount, String descript, InputStream receipt, int author, int type) throws Exception {
 		reimbursementDAO.addReimbursement(amount, descript, receipt, author, type);
 	}
 	
+	// Update reimbursement status given reimbursementId, resolverId, and statusId
 	public void updateReimbursement(int reimbId, int resolver, int status) throws SQLException {
 		reimbursementDAO.updateReimbursement(reimbId, resolver, status);
 	}
 	
+	// Returns the receipt Blob given the reimbursementId
 	public Blob findReceipt(int reimbId) throws SQLException {
 		return reimbursementDAO.findReceipt(reimbId);
 	}

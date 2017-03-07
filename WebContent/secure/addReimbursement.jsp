@@ -8,18 +8,19 @@
 	</head>
 	<body>
 		<div>
-			<form action="add.do" method="post" enctype="multipart/form-data">
+			<!-- enctype="multipart/form-data" -->
+			<form action="add.do" method="POST" enctype="multipart/form-data" >
 				<div>Amount: </div>
-				<input type="text" name="amount" />
+				<input type="text" id="amount" name="amount" />
 				<div>Type: </div>
-				<select name="type">
+				<select id="type" name="type">
 					<option value="Lodging">Lodging</option>
 					<option value="Travel">Travel</option>
 					<option value="Food">Food</option>
 					<option value="Other">Other</option>
 				</select><br/>
 				<div>Description:</div>
-				<input type="text" name="description" /><br/>
+				<input type="text" id="dexcription" name="description" /><br/>
 				<div>Receipt(jpg): </div>
 				<input type="file" name="receipt" /><br/>
 				<input type="submit" value="submit">

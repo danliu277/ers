@@ -17,37 +17,30 @@ public class FrontController extends HttpServlet {
 		switch(requestURI) {
 			case "ers/login.do": {
 				req.getRequestDispatcher("login.do").forward(req, resp);
-				//resp.sendRedirect("login.do");
 				break;
 			}
 			case "/ers/secure/toAdd.do": {
 				req.getRequestDispatcher("../toAdd.do").forward(req, resp);
-				//resp.sendRedirect("../toAdd.do");
 				break;
 			}
 			case "/ers/secure/add.do": {
 				req.getRequestDispatcher("../add.do").forward(req, resp);
-				//resp.sendRedirect("../add.do");
 				break;
 			}
 			case "/ers/secure/logout.do": {
 				req.getRequestDispatcher("../logout.do").forward(req, resp);
-				//resp.sendRedirect("../logout.do");
 				break;
 			}
 			case "/ers/secure/approve.do": {
 				req.getRequestDispatcher("../approve.do").forward(req, resp);
-				//resp.sendRedirect("../approve.do");
 				break;
 			}
 			case "/ers/secure/filter.do": {
 				req.getRequestDispatcher("../filter.do").forward(req, resp);
-				//resp.sendRedirect("../filter.do");
 				break;
 			}
 			case "/ers/secure/receipt.do": {
 				req.getRequestDispatcher("../receipt.do").forward(req, resp);
-				//resp.sendRedirect("../receipt.do");
 				break;
 			}
 			default: {

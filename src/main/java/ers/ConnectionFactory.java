@@ -1,3 +1,7 @@
+/**
+ *  Connect to sql database for DataFacade
+ */
+
 package ers;
 
 import java.sql.Connection;

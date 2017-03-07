@@ -7,10 +7,9 @@
 		<meta http-equiv="Content-Type" content="text/html; charset=ISO-8859-1">
 		<title>Login</title>
 		<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css" integrity="sha384-BVYiiSIFeK1dGmJRAkycuHAHRg32OmUcww7on3RYdg4Va+PmSTsz/K68vbdEjh4u" crossorigin="anonymous">
-		<link href="style/loginStyle.css" rel="stylesheet">
 	</head>
-	<body>
-		<div class="container">
+	<body style="background: grey;">
+		<div class="container" style="padding-top: 1%; width: 50%;">
 			<form class="form-signin" action="login.do" method="post">
 				<h2 class="form-signin-heading">Please Log In</h2>
 				<input type="text"  name="user" class="form-control" placeholder="Username" required autofocus/>
@@ -23,10 +22,10 @@
 				<c:out value="${please_login}" />
 			</div>
 		</c:if>
-		<c:choose>
-			<c:when test="${not empty val}">
-				<div style="color:red; font-weight: bolder;"><c:out value="Username and password does not match" /></div>
-			</c:when>
-		</c:choose>
+		<c:if test="${not empty val}">
+			<div style="color:red; font-weight: bolder;">
+				<c:out value="Username and password does not match" />
+			</div>
+		</c:if>
 	</body>
 </html>
