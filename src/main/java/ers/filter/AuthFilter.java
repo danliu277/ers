@@ -8,7 +8,9 @@ import javax.servlet.FilterConfig;
 import javax.servlet.ServletException;
 import javax.servlet.ServletRequest;
 import javax.servlet.ServletResponse;
+import javax.servlet.http.Cookie;
 import javax.servlet.http.HttpServletRequest;
+import javax.servlet.http.HttpServletResponse;
 
 public class AuthFilter implements Filter{
 
@@ -21,11 +23,13 @@ public class AuthFilter implements Filter{
 	public void doFilter(ServletRequest request, ServletResponse response, FilterChain chain)
 			throws IOException, ServletException {
 		HttpServletRequest req = (HttpServletRequest) request;
+		HttpServletResponse resp = (HttpServletResponse) response;
 		// Checks if user logged in using session val attribute
 		if(req.getSession().getAttribute("userId") == null) {
-			request.setAttribute("please_login", "You must login!");
-			//req.getRequestDispatcher("login.do").forward(request, response);
-			request.getRequestDispatcher("/login.do").forward(request, response);
+			request.setAttribute("please_login", "please");
+			//resp.sendRedirect("../login.do");
+			//request.setAttribute("remember", );
+			req.getRequestDispatcher("../login.do").forward(req, resp);
 		} else {
 			chain.doFilter(request, response);
 		}

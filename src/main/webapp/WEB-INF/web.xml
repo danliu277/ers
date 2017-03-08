@@ -33,15 +33,6 @@
 		<servlet-name>login</servlet-name>
 		<url-pattern>login.do</url-pattern>
 	</servlet-mapping>
-	<!-- For sending to addReimbursement page -->
-	<servlet>
-		<servlet-name>toAdd</servlet-name>
-		<servlet-class>ers.servlet.ToAddServlet</servlet-class>
-	</servlet>
-	<servlet-mapping>
-		<servlet-name>toAdd</servlet-name>
-		<url-pattern>toAdd.do</url-pattern>
-	</servlet-mapping>
 	<!-- For adding reimbursement -->
 	<servlet>
 		<servlet-name>add</servlet-name>
@@ -56,15 +47,6 @@
 	<servlet-mapping>
 		<servlet-name>add</servlet-name>
 		<url-pattern>add.do</url-pattern>
-	</servlet-mapping>
-	<!-- For logging out -->
-	<servlet>
-		<servlet-name>logout</servlet-name>
-		<servlet-class>ers.servlet.LogoutServlet</servlet-class>
-	</servlet>
-	<servlet-mapping>
-		<servlet-name>logout</servlet-name>
-		<url-pattern>logout.do</url-pattern>
 	</servlet-mapping>
 	<!-- For approving or denying reimbursements -->
 	<servlet>
@@ -105,6 +87,11 @@
 		<error-code>500</error-code>
 		<location>/error/500.jsp</location>
 	</error-page>
+	<!-- Error 403 -->
+	<error-page>
+		<error-code>403</error-code>
+		<location>/error/403.jsp</location>
+	</error-page>
 
 	<!-- Filter Declaration -->
 	<!-- Makes sure user logs in before they can access reimbursement stuff -->
@@ -143,6 +130,7 @@
 		<filter-name>employee</filter-name>
 		<url-pattern>/secure/employeePage.jsp</url-pattern>
 		<url-pattern>/secure/addReimbursement.jsp</url-pattern>
+		<url-pattern>/secure/toAdd.jsp</url-pattern>
 	</filter-mapping>
 	
 </web-app>
