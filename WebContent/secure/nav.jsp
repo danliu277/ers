@@ -5,6 +5,11 @@
 <html>
 	<head>
 		<meta http-equiv="Content-Type" content="text/html; charset=ISO-8859-1">
+		<script type="text/javascript" language="javascript" src="https://code.jquery.com/jquery-1.12.4.js">
+		</script>
+		<script type="text/javascript" language="javascript" src="https://cdn.datatables.net/1.10.13/js/jquery.dataTables.min.js">
+		</script>
+		<link rel="stylesheet" type="text/css" href="https://cdn.datatables.net/1.10.13/css/jquery.dataTables.min.css">
 		<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css" integrity="sha384-BVYiiSIFeK1dGmJRAkycuHAHRg32OmUcww7on3RYdg4Va+PmSTsz/K68vbdEjh4u" crossorigin="anonymous">
 		<link rel="stylesheet" href="../style/table.css" />
 	</head>
@@ -25,12 +30,14 @@
 						<ul class="nav navbar-nav"> 
 							<li><a style="color:white;">Hello <c:out value="${name}" /></a></li>
 							<li><a style="color:white;">Role: <c:out value="${role}" /></a>
+						</ul> 
+						<ul class="nav navbar-nav navbar-right">
 							<li><a href="employeePage.jsp">Home</a></li>
 							<c:if test="${role.equals('Employee')}">
 								<li><a href="toAdd.jsp">Add Reimbursement</a></li> 
 							</c:if> 
 							<li><a href="logout.jsp">Log Out</a></li>
-						</ul> 
+						</ul>
 					</div> 
 				</div> 
 			</nav>

@@ -9,7 +9,6 @@
 	</head>
 	<body>
 		<div>
-			<!-- enctype="multipart/form-data" -->
 			<form action="add.do" method="POST" enctype="multipart/form-data" >
 				<div>Amount: </div>
 				<input type="text" id="amount" name="amount" />

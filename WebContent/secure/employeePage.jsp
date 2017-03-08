@@ -8,66 +8,65 @@
 	<head>
 		<meta http-equiv="Content-Type" content="text/html; charset=ISO-8859-1">
 		<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css" integrity="sha384-BVYiiSIFeK1dGmJRAkycuHAHRg32OmUcww7on3RYdg4Va+PmSTsz/K68vbdEjh4u" crossorigin="anonymous">
-		<title>Employee Page</title>
 		<link href="../style/table.css" rel="stylesheet">
+		<title>Employee Page</title>
 	</head>
 	<body>
-		<% int i=1; %>
-		<form action="logout.do" method="post">
-			<input type="submit" value="Logout" />
-		</form>
-		<span>Username: </span><c:out value="${username}" /> <br/>
-		<span>Name: </span><c:out value="${name}" /> <br/>
-		<span>Role: </span><c:out value="${role}" /> <br/>
-		<form action="toAdd.do" method="post">
-			<input type="submit" value="Add Reimbursement" />
-		</form>
-		<table class="table table-striped table-hover table-condensed table-bordered table-responsive">
-			<tr><th>#</th><th>Amount</th><th>Submitted</th><th>Resolved<th>Description</th>
-			<th>Receipt</th><th>Author</th><th>Resolver</th><th>Status</th><th>Type</th></tr>
-			<c:forEach var="temp" items="${reimb}">
-				<tr>
-				<td><%= i++ %></td>
-				<td><fmt:setLocale value="en_US"/><fmt:formatNumber type="currency" value="${temp.amount}" /></td>
-				<td><fmt:formatDate value="${temp.submitted}" pattern="MM/dd/yyyy HH:mm"/></td>
-				<td>
-					<c:choose>
-						<c:when test="${empty temp.resolved}">
-							-
-						</c:when>
-						<c:otherwise>
-							<fmt:formatDate value="${temp.resolved}" pattern="MM/dd/yyyy HH:mm"/>
-						</c:otherwise>
-					</c:choose>
-				</td>
-				<td>${temp.descript}</td>
-				<td>
-					<c:choose>
-						<c:when test="${empty temp.receipt}">
-							-
-						</c:when>
-						<c:otherwise>
-							<form action="receipt.do" method="post" target="_blank">
-								<input type="hidden" value="${temp.reimbId}" name="reimbId">
-								<input type="submit" value="Receipt" />
-							</form>
-						</c:otherwise>
-					</c:choose>
-				</td>
-				<td>${temp.author.firstName} ${temp.author.lastName}</td>
-				<td>
-					<c:choose>
-						<c:when test="${not empty temp.resolver.userName}">
-							${temp.resolver.firstName} ${temp.resolver.lastName}
-						</c:when>
-						<c:otherwise>
-							-
-						</c:otherwise>
-					</c:choose>
-				</td>
-				<td>${temp.status.status}</td>
-				<td>${temp.type.type}</td></tr>
-			</c:forEach>
+		<table id="myTable" class="table table-striped table-hover table-condensed table-bordered table-responsive">
+			<thead>
+				<tr><th>Id</th><th>Amount</th><th>Submitted</th><th>Resolved<th>Description</th>
+				<th>Receipt</th><th>Author</th><th>Resolver</th><th>Status</th><th>Type</th></tr>
+			</thead>
+			<tbody>
+				<c:forEach var="temp" items="${reimb}">
+					<tr>
+					<td>${temp.reimbId}</td>
+					<td><fmt:setLocale value="en_US"/><fmt:formatNumber type="currency" value="${temp.amount}" /></td>
+					<td><fmt:formatDate value="${temp.submitted}" pattern="MM/dd/yyyy HH:mm"/></td>
+					<td>
+						<c:choose>
+							<c:when test="${empty temp.resolved}">
+								-
+							</c:when>
+							<c:otherwise>
+								<fmt:formatDate value="${temp.resolved}" pattern="MM/dd/yyyy HH:mm"/>
+							</c:otherwise>
+						</c:choose>
+					</td>
+					<td>${temp.descript}</td>
+					<td>
+						<c:choose>
+							<c:when test="${empty temp.receipt}">
+								-
+							</c:when>
+							<c:otherwise>
+								<form action="receipt.do" method="post" target="_blank">
+									<input type="hidden" value="${temp.reimbId}" name="reimbId">
+									<input type="submit" value="Receipt" />
+								</form>
+							</c:otherwise>
+						</c:choose>
+					</td>
+					<td>${temp.author.firstName} ${temp.author.lastName}</td>
+					<td>
+						<c:choose>
+							<c:when test="${not empty temp.resolver.userName}">
+								${temp.resolver.firstName} ${temp.resolver.lastName}
+							</c:when>
+							<c:otherwise>
+								-
+							</c:otherwise>
+						</c:choose>
+					</td>
+					<td>${temp.status.status}</td>
+					<td>${temp.type.type}</td></tr>
+				</c:forEach>
+			</tbody>
 		</table>
 	</body>
+	<script type="text/javascript">
+		$(document).ready(function(){
+		    $('#myTable').DataTable();
+		});
+	</script>
 </html>

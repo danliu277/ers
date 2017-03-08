@@ -12,7 +12,7 @@
 	<body style="background: grey;">
 		<div class="container" style="padding-top: 1%; width: 50%;">
 			<form class="form-signin" action="login.do" method="post">
-				<h2 class="form-signin-heading">Please Log In</h2>
+				<h2 class="form-signin-heading" style="text-align: center;">Please Log In</h2>
 				<input type="text"  name="user" id="user" class="form-control" placeholder="Username" required autofocus/>
 				<input type="password" name="pass" class="form-control" placeholder="Password" required /><br/>
 				<div class="checkbox">
