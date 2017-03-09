@@ -1,17 +1,8 @@
 @CHARSET "ISO-8859-1";
 table{
 	text-align: center;
+	vertical-align: center;
 }
-/* .description{
-	max-width: 390px;
-	overflow: hidden;
-	text-overflow: ellipsis;
-  	white-space: nowrap;
-}
-.description:hover {
-  	max-width: 390px;
-  	height: 100%;
-} */
 .description {
     max-width: 300px;
     min-width: 50px;

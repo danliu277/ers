@@ -8,9 +8,14 @@
 	<head>
 		<meta http-equiv="Content-Type" content="text/html; charset=ISO-8859-1">
 		<link rel="stylesheet" type="text/css" href="../css/table.css">
+		<link rel="stylesheet" type="text/css" href="../css/reimbSuccess.css">
 		<title>Employee Page</title>
 	</head>
 	<body>
+		<c:if test="${requestScope.reimbSuccess}">
+			<div id="reimbSuccess" class="alert alert-success" role="alert">Reimbursement Successfully Submitted</div>
+			<c:remove var="reimbSuccess" scope="request"/>
+		</c:if>
 		<table id="myTable" class="table table-striped table-hover table-condensed table-bordered table-responsive">
 			<thead>
 				<tr><th>Id</th><th>Amount</th><th>Submitted</th><th>Resolved<th>Description</th>
@@ -50,7 +55,7 @@
 							<c:otherwise>
 								<form action="receipt.do" method="post" target="_blank">
 									<input type="hidden" value="${temp.reimbId}" name="reimbId">
-									<button type="submit" class="btn btn-info" name="receipt" value="Receipt">
+									<button type="submit" class="btn btn-info btn-sm" name="receipt" value="Receipt">
 									   Receipt
 									</button>
 								</form>

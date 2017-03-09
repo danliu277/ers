@@ -65,8 +65,12 @@ public class AddServlet extends HttpServlet{
 			req.getSession().setAttribute("reimb", 
 				facade.findUserReimbursement(Integer.parseInt(req.getSession().getAttribute("userId").toString())));
 			
+			// Set attribute to successfully submitted
+			req.setAttribute("reimbSuccess", "true");
+			
 			// Go back to employeePage
-			resp.sendRedirect("secure/employeePage.jsp");
+			//resp.sendRedirect("secure/employeePage.jsp");
+			req.getRequestDispatcher("secure/employeePage.jsp").forward(req, resp);
 		} catch(Exception e) {
 			e.printStackTrace();
 		}

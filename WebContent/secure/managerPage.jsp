@@ -62,7 +62,7 @@
 							<c:otherwise>
 								<form action="receipt.do" method="post" target="_blank">
 									<input type="hidden" value="${temp.reimbId}" name="reimbId">
-									<button type="submit" class="btn btn-info" name="receipt" value="Receipt">
+									<button type="submit" class="btn btn-info btn-sm" name="receipt" value="Receipt">
 									   Receipt
 									</button>
 								</form>
@@ -87,10 +87,10 @@
 							<c:when test="${temp.status.status == 'Pending'}">
 								<form action="approve.do" method="post">
 									<input type="hidden" value="${temp.reimbId}" name="reimbId">
-									<button type="submit" class="btn btn-success" name="act" value="Approve">
+									<button type="submit" class="btn btn-success btn-sm" name="act" value="Approve">
 									   <span class="glyphicon glyphicon-ok"></span>
 									</button>
-									<button type="submit" class="btn btn-danger" name="act" value="Deny">
+									<button type="submit" class="btn btn-danger btn-sm" name="act" value="Deny">
 									   <span class="glyphicon glyphicon-remove"></span>
 									</button>
 								</form>
