@@ -1,0 +1,19 @@
+@CHARSET "ISO-8859-1";
+
+body{
+	background-image: url(http://rpn-bg.com/cp/wp-content/uploads/Online-Banking.jpg);
+}
+
+#login{
+	width: 40%; 
+	background: white; 
+	position: relative; 
+	top: 50%; 
+	transform: translateY(50%);
+}
+
+#line{
+	color: red; 
+	font-weight: bolder; 
+	text-align: center;
+}

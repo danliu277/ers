@@ -7,7 +7,7 @@
 <html>
 	<head>
 		<meta http-equiv="Content-Type" content="text/html; charset=ISO-8859-1">
-		<link rel="stylesheet" type="text/css" href="../css/table.css">
+		<link rel="stylesheet" type="text/css" href="${pageContext.request.contextPath}/css/table.css">
 		<title>Manager Page</title>
 	</head>
 	<body>
@@ -104,5 +104,5 @@
 			</tbody>
 		</table>
 	</body>
-	<script src="../js/table.js" type="text/javascript"></script>
+	<script src="${pageContext.request.contextPath}/js/table.js" type="text/javascript"></script>
 </html>
