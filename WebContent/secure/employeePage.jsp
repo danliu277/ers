@@ -7,8 +7,6 @@
 <html>
 	<head>
 		<meta http-equiv="Content-Type" content="text/html; charset=ISO-8859-1">
-		<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css" integrity="sha384-BVYiiSIFeK1dGmJRAkycuHAHRg32OmUcww7on3RYdg4Va+PmSTsz/K68vbdEjh4u" crossorigin="anonymous">
-		<link href="../style/table.css" rel="stylesheet">
 		<title>Employee Page</title>
 	</head>
 	<body>
@@ -33,7 +31,16 @@
 							</c:otherwise>
 						</c:choose>
 					</td>
-					<td>${temp.descript}</td>
+					<td class="description">
+						<c:choose>
+							<c:when test="${not empty temp.descript}">
+								${temp.descript}
+							</c:when>
+							<c:otherwise>
+								-
+							</c:otherwise>
+						</c:choose>
+					</td>
 					<td>
 						<c:choose>
 							<c:when test="${empty temp.receipt}">
@@ -42,7 +49,9 @@
 							<c:otherwise>
 								<form action="receipt.do" method="post" target="_blank">
 									<input type="hidden" value="${temp.reimbId}" name="reimbId">
-									<input type="submit" value="Receipt" />
+									<button type="submit" class="btn btn-info" name="receipt" value="Receipt">
+									   Receipt
+									</button>
 								</form>
 							</c:otherwise>
 						</c:choose>
@@ -64,9 +73,5 @@
 			</tbody>
 		</table>
 	</body>
-	<script type="text/javascript">
-		$(document).ready(function(){
-		    $('#myTable').DataTable();
-		});
-	</script>
+	<script src="../js/table.js" type="text/javascript"></script>
 </html>

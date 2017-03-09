@@ -8,22 +8,33 @@
 		<title>Add Reimbursement</title>
 	</head>
 	<body>
-		<div>
+		<div class="container">
 			<form action="add.do" method="POST" enctype="multipart/form-data" >
-				<div>Amount: </div>
-				<input type="text" id="amount" name="amount" />
-				<div>Type: </div>
-				<select id="type" name="type">
-					<option value="Lodging">Lodging</option>
-					<option value="Travel">Travel</option>
-					<option value="Food">Food</option>
-					<option value="Other">Other</option>
-				</select><br/>
-				<div>Description:</div>
-				<input type="text" id="dexcription" name="description" /><br/>
-				<div>Receipt(jpg): </div>
-				<input type="file" name="receipt" /><br/>
-				<input type="submit" value="submit">
+				<div class="form-group">
+					<label for="amount" class="col-2 col-form-label">Amount:</label>
+					<div class="col-10">
+						<input class="form-control" type="text" id="amount" name="amount" placeholder="$0.00">
+					</div>
+				</div>
+				<div class="form-group">
+					<label for="type" class="col-2 col-form-label">Type:</label>
+					<select multiple class="form-control" id="type" name="type">
+				      	<option value="Lodging">Lodging</option>
+						<option value="Travel">Travel</option>
+						<option value="Food">Food</option>
+						<option value="Other">Other</option>
+				    </select>
+				</div>
+				<div class="form-group">
+			    	<label for="description" class="col-2 col-form-label">Description:</label>
+			    	<textarea class="form-control" id="description" name="description" rows="3" placeholder="Description"></textarea>
+			  	</div>
+			  	<div class="form-group">
+				    <label for="receipt">Receipt</label>
+				    <input type="file" class="form-control-file" name="receipt" id="receipt" aria-describedby="fileHelp">
+					<small id="fileHelp" class="form-text text-muted">Jpg files only</small>
+				</div>
+				<input type="submit" class="btn btn-primary" value="submit">
 			</form>
 		</div>
 	</body>

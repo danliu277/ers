@@ -7,14 +7,13 @@
 <html>
 	<head>
 		<meta http-equiv="Content-Type" content="text/html; charset=ISO-8859-1">
-		<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css" integrity="sha384-BVYiiSIFeK1dGmJRAkycuHAHRg32OmUcww7on3RYdg4Va+PmSTsz/K68vbdEjh4u" crossorigin="anonymous">
-		<link href="../style/table.css" rel="stylesheet">
+		<link rel="stylesheet" type="text/css" href="../css/table.css">
 		<title>Manager Page</title>
 	</head>
 	<body>
-		<div>
-			Filter by:
-			<form action="filter.do" method="post">
+		<div style="padding-bottom: 10px; padding-left: 5px;">
+			<label for="filter" class="col-2 col-form-label">Filter By:</label>
+			<form id="filter" action="filter.do" method="post">
 				<select name="filter">
 					<option value="All">All</option>
 					<option value="Pending">Pending</option>
@@ -45,7 +44,16 @@
 							</c:otherwise>
 						</c:choose>
 					</td>
-					<td>${temp.descript}</td>
+					<td class="description">
+						<c:choose>
+							<c:when test="${not empty temp.descript}">
+								${temp.descript}
+							</c:when>
+							<c:otherwise>
+								-
+							</c:otherwise>
+						</c:choose>
+					</td>
 					<td>
 						<c:choose>
 							<c:when test="${empty temp.receipt}">
@@ -54,7 +62,9 @@
 							<c:otherwise>
 								<form action="receipt.do" method="post" target="_blank">
 									<input type="hidden" value="${temp.reimbId}" name="reimbId">
-									<input type="submit" value="Receipt" />
+									<button type="submit" class="btn btn-info" name="receipt" value="Receipt">
+									   Receipt
+									</button>
 								</form>
 							</c:otherwise>
 						</c:choose>
@@ -77,8 +87,12 @@
 							<c:when test="${temp.status.status == 'Pending'}">
 								<form action="approve.do" method="post">
 									<input type="hidden" value="${temp.reimbId}" name="reimbId">
-									<input type="submit" name="act" value="Approve"/>
-									<input type="submit" name="act" value="Deny" />
+									<button type="submit" class="btn btn-success" name="act" value="Approve">
+									   <span class="glyphicon glyphicon-ok"></span>
+									</button>
+									<button type="submit" class="btn btn-danger" name="act" value="Deny">
+									   <span class="glyphicon glyphicon-remove"></span>
+									</button>
 								</form>
 							</c:when>
 							<c:otherwise>
@@ -90,9 +104,5 @@
 			</tbody>
 		</table>
 	</body>
-	<script type="text/javascript">
-		$(document).ready(function(){
-		    $('#myTable').DataTable();
-		});
-	</script>
+	<script src="../js/table.js" type="text/javascript"></script>
 </html>
