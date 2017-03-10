@@ -26,14 +26,14 @@
 					<tr>
 					<td>${temp.reimbId}</td>
 					<td><fmt:setLocale value="en_US"/><fmt:formatNumber type="currency" value="${temp.amount}" /></td>
-					<td><fmt:formatDate value="${temp.submitted}" pattern="MM/dd/yyyy HH:mm"/></td>
+					<td><fmt:formatDate value="${temp.submitted}" pattern="MM/dd/yyyy h:mm a"/></td>
 					<td>
 						<c:choose>
 							<c:when test="${empty temp.resolved}">
 								-
 							</c:when>
 							<c:otherwise>
-								<fmt:formatDate value="${temp.resolved}" pattern="MM/dd/yyyy HH:mm"/>
+								<fmt:formatDate value="${temp.resolved}" pattern="MM/dd/yyyy h:mm a"/>
 							</c:otherwise>
 						</c:choose>
 					</td>
