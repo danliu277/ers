@@ -13,7 +13,7 @@
 				<div class="form-group">
 					<label for="amount" class="col-2 col-form-label">Amount:</label>
 					<div class="col-10">
-						<input class="form-control" type="number" id="amount" name="amount" placeholder="0.00" min="0.01" step="0.01">
+						<input class="form-control" type="number" id="amount" name="amount" placeholder="0.00" min="0.01" max="999999999.99" step="0.01">
 					</div>
 				</div>
 				<div class="form-group">
