@@ -32,7 +32,7 @@
 			  	<div class="form-group">
 				    <label for="receipt">Receipt</label>
 				    <input type="file" class="form-control-file" name="receipt" id="receipt" aria-describedby="fileHelp">
-					<small id="fileHelp" class="form-text text-muted">Jpg files only</small>
+					<small id="fileHelp" class="form-text text-muted">Jpg/Png</small>
 				</div>
 				<input type="submit" class="btn btn-primary" value="submit">
 			</form>
