@@ -37,6 +37,7 @@ public class LoginServlet extends HttpServlet{
 						// If cookie exixts rewrite cookie
 						if(e.getName().equals("user")) {
 							e.setValue(session.getAttribute("username").toString());
+							e.setPath("/");
 							resp.addCookie(e);
 							exists = true;
 						}
@@ -44,6 +45,7 @@ public class LoginServlet extends HttpServlet{
 					// If cookie does not exists create cookie
 					if(!exists) {
 						Cookie cookie = new Cookie("user", session.getAttribute("username").toString());
+						cookie.setPath("/");
 						// Lasts a day
 						cookie.setMaxAge(60*60*24);
 						resp.addCookie(cookie);

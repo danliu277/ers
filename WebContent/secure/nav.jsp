@@ -27,7 +27,7 @@
 					</div> 
 					<div class="collapse navbar-collapse" id="bs-example-navbar-collapse-9"> 
 						<ul class="nav navbar-nav"> 
-							<li><a style="color:white;">Hello <c:out value="${name}" /></a></li>
+							<li><a style="color:white;">Welcome <c:out value="${name}" /></a></li>
 							<li><a style="color:white;">Role: <c:out value="${role}" /></a>
 						</ul> 
 						<ul class="nav navbar-nav navbar-right">

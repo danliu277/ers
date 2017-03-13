@@ -1,6 +1,6 @@
 /**
- * 	Fade out for reimbursement success
+ * Fade out for reimbursement success
  */
 setTimeout(function() {
-  $("#reimbSuccess").fadeOut(1500);
-}, 1500);
+	$("#reimbSuccess").fadeOut(1500);
+}, 1500);​
