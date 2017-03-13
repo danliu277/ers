@@ -18,7 +18,7 @@
 				</div>
 				<div class="form-group">
 					<label for="type" class="col-2 col-form-label">Type:</label>
-					<select multiple class="form-control" id="type" name="type">
+					<select class="form-control" id="type" name="type">
 				      	<option value="Lodging">Lodging</option>
 						<option value="Travel">Travel</option>
 						<option value="Food">Food</option>
