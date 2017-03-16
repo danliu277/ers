@@ -12,7 +12,6 @@ public class FrontController extends HttpServlet {
 	
 	@Override
 	protected void doPost(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
-		System.out.println("front controller");
 		String requestURI = req.getRequestURI();
 		switch(requestURI) {
 			case "ers/login.do": {

@@ -37,16 +37,17 @@ public class DataFacade implements AutoCloseable{
 	// Find user if password given matches with the username given and password in database
 	public User findUser(String username, String password) throws Exception {
 		String temp = userDAO.findPassword(username);
+		// If user not found
 		if(temp == null) {
 			System.out.println("Username not found");
 			return null;
 		}
+		// If user found
 		if (BCrypt.checkpw(password, temp)) {
-			System.out.println("Username found and password matches");
 		    return userDAO.findUser(username);
 		}
+		// If username and password does not match
 		else{
-			System.out.println("Username and password does not match");
 		    return null;
 		}
 	}

@@ -1,6 +1,5 @@
 package ers.servlet;
 
-import java.io.File;
 import java.io.IOException;
 import java.io.InputStream;
 
@@ -31,15 +30,9 @@ public class AddServlet extends HttpServlet{
 			// Stuff to parse parameter
 			DiskFileItemFactory factory = new DiskFileItemFactory();
 			factory.setSizeThreshold(1024 * 1024 * 3);
-			factory.setRepository(new File(System.getProperty("java.io.tmpdir")));
 			ServletFileUpload upload = new ServletFileUpload(factory);
 			upload.setFileSizeMax(1024 * 1024 * 40);
 			upload.setSizeMax(1024 * 1024 * 50);
-			String uploadPath = getServletContext().getRealPath("") + File.separator + "image_upload";
-	        File uploadDir = new File(uploadPath);
-	        if (!uploadDir.exists()) {
-	            uploadDir.mkdir();
-	        }
 	        // Parse parameters
 			for(FileItem item: upload.parseRequest(req)) {
 				if(item.getFieldName().equals("amount")) {
